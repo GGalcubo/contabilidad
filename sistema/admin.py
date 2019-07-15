@@ -4,14 +4,14 @@ from .models import TipoGasto, Gasto, Estado, Factura
 
 # Register your models here.
 class GastoAdmin(admin.ModelAdmin):
-    list_display =  ('fecha', 'tipo', 'estado', 'concepto', 'monto')
-    list_filter = ['fecha', 'tipo', 'estado']
+    list_display =  ('fecha', 'tipo', 'estado', 'concepto', 'monto', 'asignado')
+    list_filter = ['fecha', 'tipo', 'estado', 'asignado']
     search_fields = ['concepto']
 
 
 class FacturaAdmin(admin.ModelAdmin):
-    list_display =  ('fecha', 'numero', 'estado', 'monto')
-    list_filter = ['fecha', 'numero', 'estado']
+    list_display =  ('fecha', 'numero', 'estado', 'monto', 'asignado')
+    list_filter = ['fecha', 'numero', 'estado', 'asignado']
     search_fields = ['numero']
 
 

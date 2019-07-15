@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Estado(models.Model):
@@ -22,6 +23,7 @@ class Gasto(models.Model):
     concepto = models.CharField(max_length=200)
     monto = models.IntegerField(default=0)
     comprobante = models.ImageField(upload_to='comprobante', null=True, blank=True)
+    asignado = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return 'fecha: ' + self.fecha + ' tipo: ' + self.tipo 
@@ -33,6 +35,7 @@ class Factura(models.Model):
     estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
     monto = models.IntegerField(default=0)
     factura = models.ImageField(upload_to='facturas', null=True, blank=True)
+    asignado = models.OneToOneField(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return 'fecha: ' + self.fecha + ' numero: ' + self.numero 
+        return self.numero 
